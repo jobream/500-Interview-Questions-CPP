@@ -10,12 +10,6 @@ Question Link :   https://leetcode.com/problems/remove-duplicates-from-sorted-li
 
 */ 
 
-
-
-
-
-
-
 class Solution {
 public:
 	ListNode* deleteDuplicates(ListNode* head) 
@@ -31,5 +25,5 @@ public:
 				curr = curr->next;
 		}
 		return head;
-	}
+	
 };
