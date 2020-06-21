@@ -40,7 +40,7 @@ void leftView(Node *root)
 
 
 
-Method -2 (Using recursion)
+Method -2 (Using recursion & pre order traversal) O(n)
 
 // Recursive function to print left view of a binary tree. 
 void leftViewUtil(node* root, int level, int* max_level) 
