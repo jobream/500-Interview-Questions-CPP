@@ -2,13 +2,16 @@
 Author : AMAN JAIN
 DATE: 08-07-2020
 
-Program : Cycle detection in Undirected Graph using dfs
-Program link : https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+Program : Determine if an undirected graph is a tree
 
-Solution for geeksforgeeks
+Tree- It is a undirected connected graph with no cycle
 
- Run a DFS from every unvisited node. Depth First Traversal can be used to detect a cycle in a Graph. DFS for a connected graph produces a tree. There is a cycle in a graph only if there is a back edge present in the graph. A back edge is an edge that is joining a node to itself (self-loop) or one of its ancestor in the tree produced by DFS.
-To find the back edge to any of its ancestor keep a visited array and if there is a back edge to any visited node then there is a loop and return true.
+An undirected graph is tree if it has following properties.
+1) There is no cycle.
+2) The graph is connected.
+
+
+So basically we need to check if the graph is connected and has no cycle.
 
 TIME COMPLEXITY - O(v+e)
 */
@@ -50,11 +53,22 @@ int main(){
             Graph[y].push_back(x);
         }
         int visited[V]={0};
-        for(int i=0  ;i<V ;i++)
-        if(visited[i]==0)
-        CycleDetection(Graph,visited,i,-1);
+        CycleDetection(Graph,visited,0,-1); //check for cycle
 
-        cout<<hasCycle<<endl;
+        bool isConnected=true;
+
+        for(int i=0 ; i<V; i++){ //check for nodes which were not reacheable in the last dfs call
+            if(visited[i]==0){
+                isConnected=false;
+                break;
+            }
+        }
+        
+        if(isConnected && (!hasCycle))
+        cout<<"Yes it is a tree"<<endl;
+        else{
+            cout<<"No it is not a tree"<<endl;
+        }
         hasCycle=0;
     }
 }
